@@ -115,6 +115,40 @@ func (lList *LinkedList) RemoveItem(index int) {
 	head.nextElm = appender
 	}
 
+// Insert item to list with index
+func (lList *LinkedList) InsertItem(allowedTypes AllowedTypes, newVal interface{}, index int){
+
+	if index == 0 {
+		fmt.Println("invalid index")
+		return
+	}
+
+	if index > lList.Length(){
+		index = lList.Length()
+	}
+
+	newElm := LinkedList{
+		value: newVal,
+		nextElm: nil,
+	}
+
+	if validType, _ := validateType(allowedTypes, &newElm); validType != true{
+		fmt.Println("invalid type for new element: ", newElm.value)
+		return
+	}
+
+	head := lList
+	for elmCount := 2; elmCount <= index; elmCount++ {
+			head = head.nextElm
+			fmt.Println("test index")
+	}
+	newElm.value = head.value
+	newElm.nextElm = head.nextElm
+	head.value = newVal
+	head.nextElm = &newElm
+
+}
+
 
 // Tests for linked list
 func main(){
@@ -132,6 +166,7 @@ func main(){
 	}
 
 	myList.RemoveItem(4)
+	myList.InsertItem(allowedTypes, "newTest", 5)
 	fmt.Println(myList.Length())
 	for cnt:=1 ; cnt <= myList.Length(); cnt++{
 		fmt.Println(myList.GetItem(cnt))
