@@ -63,22 +63,14 @@ func (lList *LinkedList) AddItems(allowedTypes AllowedTypes,  elements ...interf
 // Get item by index
 func (lList *LinkedList) GetItem(index int) interface{} {
 	head := lList
-	for elmCount := 1; elmCount <= index; elmCount++ {
-		if elmCount == index {
-			return head.value
-		}else {
+	for elmCount := 1; elmCount < index; elmCount++ {
 			head = head.nextElm
-		}
 	}
-	return nil
+	return head.value
 }
 
 // Get length of linked list
 func (lList *LinkedList) Length() int {
-	if lList.value == nil{
-		return 0
-	}
-
 	head := lList
 	length := 0
 	for {
@@ -90,7 +82,7 @@ func (lList *LinkedList) Length() int {
 		}
 	}
 
-	return 0
+	return length
 }
 
 // Remove element by index
@@ -140,7 +132,6 @@ func (lList *LinkedList) InsertItem(allowedTypes AllowedTypes, newVal interface{
 	head := lList
 	for elmCount := 2; elmCount <= index; elmCount++ {
 			head = head.nextElm
-			fmt.Println("test index")
 	}
 	newElm.value = head.value
 	newElm.nextElm = head.nextElm
@@ -161,14 +152,14 @@ func main(){
 	myList.AddItem(allowedTypes, 12)
 	myList.AddItems(allowedTypes, elements...)
 
-	for cnt:=1 ; cnt <= myList.Length(); cnt++{
+	for cnt:=0 ; cnt <= myList.Length() ; cnt++{
 		fmt.Println(myList.GetItem(cnt))
 	}
-
 	myList.RemoveItem(4)
 	myList.InsertItem(allowedTypes, "newTest", 5)
 	fmt.Println(myList.Length())
-	for cnt:=1 ; cnt <= myList.Length(); cnt++{
+
+	for cnt:=1 ; cnt <= myList.Length() ; cnt++{
 		fmt.Println(myList.GetItem(cnt))
 	}
 }
