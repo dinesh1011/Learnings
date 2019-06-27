@@ -1,0 +1,8 @@
+
+def toBinary(input):
+    xx = ""
+    if input < 2:
+        return
+    toBinary(input // 2)
+    xx = xx + str(input % 2)
+    print(xx)

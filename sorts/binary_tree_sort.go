@@ -22,7 +22,7 @@ func binaryTreeSort(inputArray []int, order string){
 	}
 }
 
-
+/*
 func main(){
 
 	inputArray := []int {135305, 153880, 111255, 21406, 57002, 52054, 103056, 64209,
@@ -34,3 +34,4 @@ func main(){
 	binaryTreeSort(inputArray, "desc")
 
 }
+*/

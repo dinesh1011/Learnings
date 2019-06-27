@@ -1,4 +1,4 @@
-package main
+package LinkedList
 
 import (
 	"errors"
@@ -6,8 +6,8 @@ import (
 )
 
 type LinkedList struct {
-	value interface{}
-	nextElm * LinkedList
+	Value interface{}
+	NextElm * LinkedList
 }
 
 // Restrict your linked list with desired data types
@@ -15,7 +15,7 @@ type AllowedTypes []string
 
 func validateType(allowedTypes AllowedTypes, element *LinkedList) (valid bool, err error) {
 	var elmType string
-	elmType = fmt.Sprintf("%T", element.value)
+	elmType = fmt.Sprintf("%T", element.Value)
 	for _, validType := range allowedTypes {
 		if validType == elmType{
 			return true, nil
@@ -27,28 +27,28 @@ func validateType(allowedTypes AllowedTypes, element *LinkedList) (valid bool, e
 // Add item to the list
 func (lList *LinkedList) AddItem(allowedTypes AllowedTypes, newVal interface{}) {
 	newElm := LinkedList{
-		value: newVal,
-		nextElm: nil,
+		Value: newVal,
+		NextElm: nil,
 	}
 
 	if validType, _ := validateType(allowedTypes, &newElm); validType != true {
-		fmt.Println("invalid type for new element: ", newElm.value)
+		fmt.Println("invalid type for new element: ", newElm.Value)
 		return
 	}
 
-	if lList.value == nil{
-		lList.value =newVal
-		lList.nextElm = nil
+	if lList.Value == nil{
+		lList.Value =newVal
+		lList.NextElm = nil
 		return
 	}
 
 	head := lList
 	for {
-		if head.nextElm == nil {
-			head.nextElm = &newElm
+		if head.NextElm == nil {
+			head.NextElm = &newElm
 			return
 		}else {
-			head = head.nextElm
+			head = head.NextElm
 		}
 	}
 }
@@ -64,9 +64,9 @@ func (lList *LinkedList) AddItems(allowedTypes AllowedTypes,  elements ...interf
 func (lList *LinkedList) GetItem(index int) interface{} {
 	head := lList
 	for elmCount := 1; elmCount < index; elmCount++ {
-			head = head.nextElm
+			head = head.NextElm
 	}
-	return head.value
+	return head.Value
 }
 
 // Get length of linked list
@@ -75,10 +75,10 @@ func (lList *LinkedList) Length() int {
 	length := 0
 	for {
 		length += 1
-		if head.nextElm == nil {
+		if head.NextElm == nil {
 			return length
 		}else {
-			head = head.nextElm
+			head = head.NextElm
 		}
 	}
 
@@ -87,24 +87,24 @@ func (lList *LinkedList) Length() int {
 
 // Remove element by index
 func (lList *LinkedList) RemoveItem(index int) {
-	if lList.value == nil || index > lList.Length() || index == 0{
+	if lList.Value == nil || index > lList.Length() || index == 0{
 		return
 	}
 
 	if index == 1 {
 		head := lList
-		appender := head.nextElm
-		head.value = appender.value
-		head.nextElm = appender.nextElm
+		appender := head.NextElm
+		head.Value = appender.Value
+		head.NextElm = appender.NextElm
 		return
 	}
 
 	head := lList
 	for elmCount :=2; elmCount <= (index -1); elmCount ++{
-			head = head.nextElm
+			head = head.NextElm
 		}
-	appender := head.nextElm.nextElm
-	head.nextElm = appender
+	appender := head.NextElm.NextElm
+	head.NextElm = appender
 	}
 
 // Insert item to list with index
@@ -120,23 +120,23 @@ func (lList *LinkedList) InsertItem(allowedTypes AllowedTypes, newVal interface{
 	}
 
 	newElm := LinkedList{
-		value: newVal,
-		nextElm: nil,
+		Value: newVal,
+		NextElm: nil,
 	}
 
 	if validType, _ := validateType(allowedTypes, &newElm); validType != true{
-		fmt.Println("invalid type for new element: ", newElm.value)
+		fmt.Println("invalid type for new element: ", newElm.Value)
 		return
 	}
 
 	head := lList
 	for elmCount := 2; elmCount <= index; elmCount++ {
-			head = head.nextElm
+			head = head.NextElm
 	}
-	newElm.value = head.value
-	newElm.nextElm = head.nextElm
-	head.value = newVal
-	head.nextElm = &newElm
+	newElm.Value = head.Value
+	newElm.NextElm = head.NextElm
+	head.Value = newVal
+	head.NextElm = &newElm
 
 }
 
@@ -151,7 +151,7 @@ func main(){
 	myList.AddItem(allowedTypes, 100)
 	myList.AddItem(allowedTypes, 12)
 	myList.AddItems(allowedTypes, elements...)
-
+	
 	for cnt:=0 ; cnt <= myList.Length() ; cnt++{
 		fmt.Println(myList.GetItem(cnt))
 	}
