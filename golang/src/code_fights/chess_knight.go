@@ -47,6 +47,6 @@ func chessKnight(cell string) int {
 
 func main() {
 
-	fmt.Println(chessKnight("g1"))
+	fmt.Println(chessKnight("g1l"))
 
 }
