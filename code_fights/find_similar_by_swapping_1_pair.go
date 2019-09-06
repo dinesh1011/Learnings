@@ -4,13 +4,13 @@ import "fmt"
 
 func areSimilar(a []int, b []int) bool {
 
-	if len(a) != len(b){
+	if len(a) != len(b) {
 		return false
 	}
 
 	misPlacedCount := 0
 
-	for counter, _ := range a {
+	for counter := range a {
 
 		if a[counter] != b[counter] {
 			misPlacedCount++
@@ -49,7 +49,7 @@ func palindromeRearranging(inputString string) bool {
 	isEven := true
 	canPalindrome := true
 
-	if len(inputString) % 2 > 0 {
+	if len(inputString)%2 > 0 {
 		isEven = false
 	}
 
@@ -71,12 +71,12 @@ func palindromeRearranging(inputString string) bool {
 				return false
 			}
 		}
-	}else {
+	} else {
 		falseCount := 0
 		for _, val := range charCount {
 			fmt.Println("odd : ", val)
 			if (val % 2) != 0 {
-				falseCount ++
+				falseCount++
 			}
 			if falseCount > 1 {
 				return false
@@ -85,4 +85,4 @@ func palindromeRearranging(inputString string) bool {
 	}
 
 	return canPalindrome
-	}
+}

@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
 func reverseInParentheses(inputString string) string {
 
 	while := true
-	for ; while == true; {
+	for while == true {
 
 		while = false
 		toReverse := ""
@@ -54,7 +52,7 @@ func reverseInParentheses(inputString string) string {
 	return inputString
 }
 
-
+/*
 func main() {
 
 	input := "foo(bar)baz(blim)"
@@ -63,3 +61,4 @@ func main() {
 	fmt.Println(-(-23))
 
 }
+*/

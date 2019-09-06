@@ -10,51 +10,51 @@ func minesweeper(matrix [][]bool) [][]int {
 
 	for listIndex, matrixlist := range matrix {
 
-		for itemIndex, _ := range matrixlist {
+		for itemIndex := range matrixlist {
 
 			bombCount := 0
 			//fmt.Println("listindex : ", listIndex)
 			//fmt.Println("itemindex : ", itemIndex)
 
 			if itemIndex > 0 {
-				if matrix[listIndex][itemIndex - 1] == true {
-				//fmt.Println("in left")
-				bombCount++
+				if matrix[listIndex][itemIndex-1] == true {
+					//fmt.Println("in left")
+					bombCount++
 				}
-				if (listIndex < matrixListLen) && (matrix[listIndex + 1][itemIndex - 1]) == true {
+				if (listIndex < matrixListLen) && (matrix[listIndex+1][itemIndex-1]) == true {
 					//fmt.Println("in bottom left corner")
 					bombCount++
 				}
 			}
 
-			if itemIndex < matrixLen{
-				if matrix[listIndex][itemIndex + 1] == true {
+			if itemIndex < matrixLen {
+				if matrix[listIndex][itemIndex+1] == true {
 					fmt.Println("in right")
 					bombCount++
 				}
-				if (listIndex > 0) && (matrix[listIndex - 1][itemIndex + 1] == true){
+				if (listIndex > 0) && (matrix[listIndex-1][itemIndex+1] == true) {
 					fmt.Println("in top right corner")
 					bombCount++
 				}
 			}
 
 			if listIndex > 0 {
-				if matrix[listIndex - 1][itemIndex] == true {
+				if matrix[listIndex-1][itemIndex] == true {
 					//fmt.Println("in top")
 					bombCount++
 				}
-				if (itemIndex > 0) && (matrix[listIndex - 1][itemIndex - 1] == true){
+				if (itemIndex > 0) && (matrix[listIndex-1][itemIndex-1] == true) {
 					//fmt.Println("in top left corner")
 					bombCount++
 				}
 			}
 
 			if listIndex < matrixListLen {
-				if matrix[listIndex + 1][itemIndex] == true {
+				if matrix[listIndex+1][itemIndex] == true {
 					//fmt.Println("in bottom")
 					//bombCount++
 				}
-				if  (itemIndex < matrixLen) && (matrix[listIndex + 1][itemIndex + 1] == true){
+				if (itemIndex < matrixLen) && (matrix[listIndex+1][itemIndex+1] == true) {
 					fmt.Println("in bottom right corner")
 					bombCount++
 				}
@@ -68,7 +68,6 @@ func minesweeper(matrix [][]bool) [][]int {
 	return minesweeperOutput
 
 }
-
 
 func minesweeperOld(matrix [][]bool) [][]int {
 
@@ -84,46 +83,46 @@ func minesweeperOld(matrix [][]bool) [][]int {
 			fmt.Println("listindex : ", listIndex)
 			fmt.Println("itemindex : ", itemIndex)
 
-			if (itemIndex > 0) && (matrix[listIndex][itemIndex - 1] == true){
+			if (itemIndex > 0) && (matrix[listIndex][itemIndex-1] == true) {
 				fmt.Println("in left")
 				bombCount++
 			}
 
-			if (itemIndex < matrixLen) && (matrix[listIndex][itemIndex + 1] == true){
+			if (itemIndex < matrixLen) && (matrix[listIndex][itemIndex+1] == true) {
 				fmt.Println("in right")
 				bombCount++
 			}
 
-			if (listIndex > 0) && (matrix[listIndex - 1][itemIndex] == true){
+			if (listIndex > 0) && (matrix[listIndex-1][itemIndex] == true) {
 				fmt.Println("in top")
 				bombCount++
 			}
 
-			if (listIndex < matrixListLen) && (matrix[listIndex + 1][itemIndex] == true){
+			if (listIndex < matrixListLen) && (matrix[listIndex+1][itemIndex] == true) {
 				fmt.Println("in bottom")
 				bombCount++
 			}
 
 			//check corners
 
-			if (listIndex > 0) && (itemIndex > 0) && (matrix[listIndex - 1][itemIndex - 1] == true){
+			if (listIndex > 0) && (itemIndex > 0) && (matrix[listIndex-1][itemIndex-1] == true) {
 				fmt.Println("in top left corner")
 				bombCount++
 			}
 
-			if (listIndex > 0) && (itemIndex < matrixLen) && (matrix[listIndex - 1][itemIndex + 1] == true){
+			if (listIndex > 0) && (itemIndex < matrixLen) && (matrix[listIndex-1][itemIndex+1] == true) {
 				fmt.Println("in top right corner")
 				bombCount++
 			}
 
-			if (listIndex < matrixListLen) && itemIndex !=0 &&
-				(matrix[listIndex + 1][itemIndex - 1] == true){
+			if (listIndex < matrixListLen) && itemIndex != 0 &&
+				(matrix[listIndex+1][itemIndex-1] == true) {
 				fmt.Println("in bottom left corner")
 				bombCount++
 			}
 
 			if (listIndex < matrixListLen) && itemIndex < matrixLen &&
-				(matrix[listIndex + 1][itemIndex + 1] == true){
+				(matrix[listIndex+1][itemIndex+1] == true) {
 				fmt.Println("in bottom right corner")
 				bombCount++
 			}
@@ -137,11 +136,11 @@ func minesweeperOld(matrix [][]bool) [][]int {
 
 }
 
-
+/*
 func main() {
 
 	matrix := [][]bool{{true, false, false}, {false, true, false}, {false, false, false}}
 	fmt.Println(minesweeper(matrix))
 
 }
-
+*/

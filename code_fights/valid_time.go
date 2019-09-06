@@ -31,11 +31,13 @@ func validTime(time string) bool {
 
 	fmt.Println(hrs)
 
-return false
+	return false
 }
 
+/*
 func main() {
 
 	validTime("12a:44b")
 
 }
+*/

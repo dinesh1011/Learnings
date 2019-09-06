@@ -11,7 +11,7 @@ func variableName(name string) bool {
 		elmFound := false
 
 		if index == 0 && char >= 48 && char <= 57 {
-				return false
+			return false
 		}
 
 		if char >= 65 && char <= 90 {
@@ -39,9 +39,11 @@ func variableName(name string) bool {
 	return isRight
 }
 
-func main(){
+/*
+func main() {
 
 	//xx := "Z"
-	fmt.Println(2%3)
+	fmt.Println(2 % 3)
 
 }
+*/

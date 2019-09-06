@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func matrixElementsSum(matrix [][]int) int {
 	matrixSum := 0
 	for rowIndex, row := range matrix {
@@ -13,7 +11,7 @@ func matrixElementsSum(matrix [][]int) int {
 			}
 
 			add := true
-			for counter := rowIndex - 1; counter >= 0; counter--{
+			for counter := rowIndex - 1; counter >= 0; counter-- {
 				if matrix[counter][elemIndex] == 0 {
 					add = false
 					break
@@ -42,7 +40,7 @@ func matrixElementsSum1(matrix [][]int) int {
 	return sum
 }
 
-
+/*
 func main(){
 
 	input := [][]int{{0, 1, 1, 0},{1, 5, 0, 1},{2, 1, 3, 10}}
@@ -52,3 +50,4 @@ func main(){
 
 	}
 
+*/

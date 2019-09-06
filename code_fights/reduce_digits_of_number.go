@@ -1,23 +1,21 @@
 package main
 
-import "fmt"
-
 //function to sum the digits of number until sum becomes 1 digit
 
 func sumDigits(input int) int {
 
 	sum := 0
 
-	for ; ; {
+	for {
 
-		if input < 10 && (sum + input) >= 10{
+		if input < 10 && (sum+input) >= 10 {
 			sum += input
 			input = sum
 			sum = 0
 			continue
 		}
 
-		if input < 10 && (sum + input) < 10 {
+		if input < 10 && (sum+input) < 10 {
 			return sum + input
 		}
 
@@ -28,6 +26,7 @@ func sumDigits(input int) int {
 
 }
 
+/*
 func main() {
 
 	input := 11232145678999
@@ -38,3 +37,4 @@ func main() {
 
 
 }
+*/

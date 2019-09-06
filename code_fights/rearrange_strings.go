@@ -4,7 +4,6 @@ import (
 	"fmt"
 )
 
-
 func permutations(inputList []string) [][]string {
 
 	inputLen := len(inputList) - 2
@@ -13,16 +12,16 @@ func permutations(inputList []string) [][]string {
 
 	for counter := inputLen; counter >= 0; counter-- {
 		appender := inputList[counter]
-		for _, _ = range outputList {
+		for range outputList {
 			baseArray := make([]string, len(outputList[0]))
 			copy(baseArray, outputList[0])
-			outputList = append(outputList[0:0], outputList[1 : ]...)
+			outputList = append(outputList[0:0], outputList[1:]...)
 
 			for index := len(baseArray); index >= 0; index-- {
 
-					baseArrayCopy := insert(baseArray, index, appender)
-					outputList = append(outputList, baseArrayCopy)
-					continue
+				baseArrayCopy := insert(baseArray, index, appender)
+				outputList = append(outputList, baseArrayCopy)
+				continue
 			}
 		}
 	}
@@ -30,13 +29,12 @@ func permutations(inputList []string) [][]string {
 	return outputList
 }
 
-func insert(array []string, index int, element string) []string{
+func insert(array []string, index int, element string) []string {
 	array = append(array, "")
-	array = append(array[0 : index+1], array[index : len(array)-1]...)
+	array = append(array[0:index+1], array[index:len(array)-1]...)
 	array[index] = element
 	return array
 }
-
 
 func stringsRearrangement(inputArray []string) bool {
 
@@ -44,31 +42,31 @@ func stringsRearrangement(inputArray []string) bool {
 	refArray = append(refArray, inputArray[0])
 	inputArray = append(inputArray[0:0], inputArray[1:]...)
 
-	for count := 0; count < len(inputArray);  {
+	for count := 0; count < len(inputArray); {
 		updated := false
-		for index := len(refArray) -1; index >= 0; index-- {
+		for index := len(refArray) - 1; index >= 0; index-- {
 
-			if index == len(refArray) - 1 && checkDiff(inputArray[count], refArray[index]) == true {
+			if index == len(refArray)-1 && checkDiff(inputArray[count], refArray[index]) == true {
 				refArray = append(refArray, inputArray[count])
-				inputArray = append(inputArray[0:count], inputArray[count + 1:]...)
+				inputArray = append(inputArray[0:count], inputArray[count+1:]...)
 				count = 0
 				updated = true
 				break
 			}
-			if index < len(refArray) - 1 &&
+			if index < len(refArray)-1 &&
 				checkDiff(inputArray[count], refArray[index]) == true &&
-				checkDiff(inputArray[count], refArray[index + 1]) == true{
+				checkDiff(inputArray[count], refArray[index+1]) == true {
 				refArray = append(refArray, inputArray[count])
-				inputArray = append(inputArray[0:count], inputArray[count + 1:]...)
+				inputArray = append(inputArray[0:count], inputArray[count+1:]...)
 				count = 0
 				updated = true
 				break
 			}
 			if index == 0 && checkDiff(inputArray[count], refArray[index]) == true {
-				refArray = append(refArray,"")
-				refArray = append(refArray[0 : 1], refArray[0 : len(refArray) -1]...)
+				refArray = append(refArray, "")
+				refArray = append(refArray[0:1], refArray[0:len(refArray)-1]...)
 				refArray[0] = inputArray[count]
-				inputArray = append(inputArray[0:count], inputArray[count + 1:]...)
+				inputArray = append(inputArray[0:count], inputArray[count+1:]...)
 				count = 0
 				updated = true
 				break
@@ -88,7 +86,6 @@ func stringsRearrangement(inputArray []string) bool {
 	return true
 }
 
-
 func checkDiff(str1 string, str2 string) bool {
 	invalidCount := 0
 	for index, char1 := range str2 {
@@ -102,9 +99,10 @@ func checkDiff(str1 string, str2 string) bool {
 	return false
 }
 
+/*
 func main() {
 
-	inputArray := []string {"abc",
+	inputArray := []string{"abc",
 		"xbc",
 		"axc",
 		"abx"}
@@ -116,3 +114,5 @@ func main() {
 	fmt.Println(stringsRearrangement(inputArray))
 
 }
+
+*/

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"learnings/linked_list"
+
+	LinkedList "../linked_list"
 )
 
 func addTwoHugeNumbers(a *LinkedList.LinkedList, b *LinkedList.LinkedList) *LinkedList.LinkedList {
@@ -41,14 +42,13 @@ func addTwoHugeNumbers(a *LinkedList.LinkedList, b *LinkedList.LinkedList) *Link
 		maxLen = len(num2)
 	}
 
+	for index := maxLen - 1; index >= 0; index-- {
 
-	for index := maxLen-1; index >= 0; index-- {
-
-		x :=  int(num1[index] - 48)
+		x := int(num1[index] - 48)
 		y := int(num2[index] - 48)
 
 		tempSum = (x + y + reminder) % 10
-		reminder = (x + y + reminder)/10
+		reminder = (x + y + reminder) / 10
 
 		sum = append(sum, tempSum)
 
@@ -56,21 +56,21 @@ func addTwoHugeNumbers(a *LinkedList.LinkedList, b *LinkedList.LinkedList) *Link
 
 	fmt.Println(num1, num2, sum)
 
-	output := &LinkedList.LinkedList {0, nil}
+	output := &LinkedList.LinkedList{0, nil}
 	base := output
 	sub := 0
 	subCount := 0
 	isFirst := true
 
-	for count := len(sum) -1; count >=0; count-- {
+	for count := len(sum) - 1; count >= 0; count-- {
 		sub = (sub * 10) + sum[count]
 		subCount++
-		if subCount % 4 == 0 || count == 0 {
+		if subCount%4 == 0 || count == 0 {
 
 			if sub == 0 && isFirst == true {
 				continue
 			}
-			output.NextElm = &LinkedList.LinkedList {sub, nil}
+			output.NextElm = &LinkedList.LinkedList{sub, nil}
 			output = output.NextElm
 			sub = 0
 			isFirst = false

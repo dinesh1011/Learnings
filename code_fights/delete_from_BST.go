@@ -2,10 +2,11 @@ package main
 
 import "fmt"
 
+//Tree with node
 type Tree struct {
-  Value interface{}
-  Left *Tree
-  Right *Tree
+	Value interface{}
+	Left  *Tree
+	Right *Tree
 }
 
 func deleteFromBST1(t *Tree, queries []int) *Tree {
@@ -16,10 +17,10 @@ func deleteFromBST1(t *Tree, queries []int) *Tree {
 
 		if t.Value.(int) == item && t.Left == nil && t.Right == nil {
 			return nil
-		}else if t.Value.(int) == item && t.Left == nil {
+		} else if t.Value.(int) == item && t.Left == nil {
 			t = t.Right
 			continue
-		}else if t.Value.(int) == item && t.Left != nil {
+		} else if t.Value.(int) == item && t.Left != nil {
 			rightMost := 0
 			foundRight := false
 			findRightMost(t.Left, t.Left, false, &foundRight, &rightMost)
@@ -71,7 +72,7 @@ func deleteItem1(t *Tree, toRemove int) {
 				t.Left = t.Right.Left
 				t.Right = t.Right.Right
 				break
-			}else if t.Left != nil {
+			} else if t.Left != nil {
 				rm := false
 				rightMost := 0
 				findRightMost1(t.Left, t.Left, false, &rm, &rightMost)
@@ -84,11 +85,11 @@ func deleteItem1(t *Tree, toRemove int) {
 					t.Left = t.Left.Left
 				}
 				break
-			}else if t.Left == nil && t.Right == nil {
+			} else if t.Left == nil && t.Right == nil {
 				//fmt.Println("parent", parent, backTracker)
 				if right == true {
 					parent.Right = nil
-				}else {
+				} else {
 					parent.Left = nil
 				}
 			}
@@ -114,17 +115,17 @@ func deleteItem1(t *Tree, toRemove int) {
 			break
 		}
 		if len(backTracker) != 0 {
-			t = backTracker[len(backTracker) - 1]
+			t = backTracker[len(backTracker)-1]
 			//parent = t
 			//fmt.Println("at backtrack", parent)
 			backTracked = true
-			backTracker = append(backTracker[0 : len(backTracker) - 1])
+			backTracker = append(backTracker[0 : len(backTracker)-1])
 			continue
 		}
 	}
 }
 
-func findRightMost1(current *Tree, parent *Tree, found bool, rm *bool, retVal *int){
+func findRightMost1(current *Tree, parent *Tree, found bool, rm *bool, retVal *int) {
 
 	if current.Right != nil {
 		findRightMost1(current.Right, current, true, rm, retVal)
@@ -137,13 +138,13 @@ func findRightMost1(current *Tree, parent *Tree, found bool, rm *bool, retVal *i
 		*retVal = current.Value.(int)
 		if current.Left != nil {
 			parent.Right = current.Left
-		}else {
+		} else {
 			parent.Right = nil
 		}
 	}
 }
 
-func findRightMost(current *Tree, parent *Tree, right bool, found *bool, retVal *int){
+func findRightMost(current *Tree, parent *Tree, right bool, found *bool, retVal *int) {
 
 	if current.Left != nil {
 		findRightMost(current.Left, current, false, found, retVal)
@@ -179,10 +180,10 @@ func deleteItem(t *Tree, toRemove int, found *bool) *Tree {
 	if t.Value.(int) == toRemove && t.Left == nil && t.Right == nil {
 		*found = true
 		root = nil
-	}else if  t.Value.(int) == toRemove && t.Left == nil {
+	} else if t.Value.(int) == toRemove && t.Left == nil {
 		*found = true
 		root = t.Right
-	}else if t.Value.(int) == toRemove && t.Left != nil {
+	} else if t.Value.(int) == toRemove && t.Left != nil {
 		*found = true
 		found := false
 		rightMost := 0
@@ -193,7 +194,7 @@ func deleteItem(t *Tree, toRemove int, found *bool) *Tree {
 		if found == false {
 			root = &Tree{t.Left.Value, t.Left.Left, t.Right}
 		}
-	}else if t.Value.(int) != toRemove {
+	} else if t.Value.(int) != toRemove {
 		root = t
 	}
 
@@ -207,7 +208,7 @@ func deleteItem(t *Tree, toRemove int, found *bool) *Tree {
 	return root
 }
 
-func traverseTree(current *Tree, parent *Tree, toRemove int, right bool, found *bool){
+func traverseTree(current *Tree, parent *Tree, toRemove int, right bool, found *bool) {
 
 	if *found == true {
 		return
@@ -249,7 +250,7 @@ func traverseTree(current *Tree, parent *Tree, toRemove int, right bool, found *
 	}
 }
 
-func readTree(tree *Tree, right bool){
+func readTree(tree *Tree, right bool) {
 	if tree == nil {
 		fmt.Println(nil)
 		return
@@ -263,9 +264,9 @@ func readTree(tree *Tree, right bool){
 	}
 }
 
-
+/*
 func main() {
-	/*
+
 	var t Tree
 	t.Value = 5
 	t.Left = &Tree{2, nil, nil}
@@ -284,7 +285,7 @@ func main() {
 	//readTree(&t, false)
 	xx := deleteFromBST(&t, queries)
 	readTree(xx, false)
-	*/
+
 
 	str := "fedsxsxsxsx"
 	key := 1
@@ -293,3 +294,4 @@ func main() {
 	}
 	fmt.Println(key)
 }
+*/

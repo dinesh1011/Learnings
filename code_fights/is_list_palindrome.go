@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"learnings/linked_list"
-	"time"
+
+	LinkedList "../linked_list"
 )
 
 func isListPalindrome(l *LinkedList.LinkedList) bool {
@@ -15,7 +15,7 @@ func isListPalindrome(l *LinkedList.LinkedList) bool {
 	actual := []string{}
 	val := ""
 
-	for ; ; {
+	for {
 
 		val = fmt.Sprintf("%d", head.Value.(int))
 		actual = append(actual, val)
@@ -25,7 +25,7 @@ func isListPalindrome(l *LinkedList.LinkedList) bool {
 		head = head.NextElm
 	}
 
-	decrementer := len(actual)-1
+	decrementer := len(actual) - 1
 
 	for _, str := range actual {
 		if str != actual[decrementer] {
@@ -41,12 +41,12 @@ func isListPalindrome(l *LinkedList.LinkedList) bool {
 func isListPalindromeRecur(l *LinkedList.LinkedList) bool {
 
 	head := l
-	check, _ := isPalindrome (head, l)
+	check, _ := isPalindrome(head, l)
 	return check
 
 }
 
-func isPalindrome(head *LinkedList.LinkedList, base *LinkedList.LinkedList) (bool,  *LinkedList.LinkedList) {
+func isPalindrome(head *LinkedList.LinkedList, base *LinkedList.LinkedList) (bool, *LinkedList.LinkedList) {
 
 	if head == nil {
 		return true, base
@@ -68,13 +68,13 @@ func isPalindrome(head *LinkedList.LinkedList, base *LinkedList.LinkedList) (boo
 
 }
 
-func reverseLinkList(l * LinkedList.LinkedList)  LinkedList.LinkedList {
+func reverseLinkList(l *LinkedList.LinkedList) LinkedList.LinkedList {
 
 	head := l
 	navigator := l.NextElm
 	head.NextElm = nil
 
-	for   {
+	for {
 		tempVal := LinkedList.LinkedList{navigator.Value, nil}
 		tempVal.NextElm = head
 		head = &tempVal
@@ -84,10 +84,9 @@ func reverseLinkList(l * LinkedList.LinkedList)  LinkedList.LinkedList {
 		navigator = navigator.NextElm
 	}
 
-return *head
+	return *head
 
 }
-
 
 func rearrangeLastN(l *LinkedList.LinkedList, n int) *LinkedList.LinkedList {
 
@@ -137,14 +136,14 @@ func rearrangeLastN(l *LinkedList.LinkedList, n int) *LinkedList.LinkedList {
 
 }
 
-
-func main(){
+/*
+func main() {
 
 	var myList LinkedList.LinkedList
 	var allowedTypes LinkedList.AllowedTypes
 	allowedTypes = append(allowedTypes, "int")
-	elements := []interface{} {1, 2, 3, 4, 5, 6, 7}
-	
+	elements := []interface{}{1, 2, 3, 4, 5, 6, 7}
+
 	myList.AddItems(allowedTypes, elements...)
 
 	fmt.Println("starting check", time.Now())
@@ -156,5 +155,6 @@ func main(){
 			break
 		}
 	}
-	fmt.Println("End check" , time.Now())
+	fmt.Println("End check", time.Now())
 }
+*/

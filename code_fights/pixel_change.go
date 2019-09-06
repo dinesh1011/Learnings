@@ -8,7 +8,7 @@ func boxBlur(image [][]int) [][]int {
 	yOutLen := len(image[0]) - 2
 	averagePixes := make([][]int, xOutLen)
 
-	for index, _ := range averagePixes {
+	for index := range averagePixes {
 		averagePixes[index] = make([]int, yOutLen)
 	}
 
@@ -16,7 +16,7 @@ func boxBlur(image [][]int) [][]int {
 	subArrayXPosition := 0
 	subArrayYPosition := 0
 
-	for xNavigator :=0; xNavigator < xOutLen; xNavigator++ {
+	for xNavigator := 0; xNavigator < xOutLen; xNavigator++ {
 		//fmt.Println("subX:", subArrayXPosition)
 		//fmt.Println("subY:", subArrayYPosition)
 		//fmt.Println("xoutlen : ", xOutLen)
@@ -55,11 +55,12 @@ func boxBlur(image [][]int) [][]int {
 	return averagePixes
 }
 
-func main(){
+/*
+func main() {
 
-	image := [][]int{{36,0,18,9},
-	{27,54,9,0},
-	{81,63,72,45}}
+	image := [][]int{{36, 0, 18, 9},
+		{27, 54, 9, 0},
+		{81, 63, 72, 45}}
 	boxBlur(image)
 }
-
+*/

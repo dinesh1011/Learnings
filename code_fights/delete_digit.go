@@ -6,7 +6,7 @@ func deleteDigit(n int) int {
 	mul, max := 1, 0
 	var newNumber int
 	for mul < n {
-		newNumber = ((n / (mul*10))*mul) + (n % mul)
+		newNumber = ((n / (mul * 10)) * mul) + (n % mul)
 		fmt.Println(newNumber)
 		if max < newNumber {
 			max = newNumber
@@ -16,8 +16,8 @@ func deleteDigit(n int) int {
 	return max
 }
 
-func main() {
+/* func main() {
 
 	fmt.Println(deleteDigit(232312))
 
-}
+} */

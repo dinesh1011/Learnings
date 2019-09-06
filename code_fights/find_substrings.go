@@ -9,7 +9,7 @@ func findSubstrings(words []string, parts []string) []string {
 
 	partKeys := make(map[string]int)
 	for _, part := range parts {
-		partKeys[part] += 1
+		partKeys[part]++
 	}
 
 	for wordIndex, word := range words {
@@ -21,12 +21,12 @@ func findSubstrings(words []string, parts []string) []string {
 		//fmt.Println(possibleWords)
 		for subIndex, subWord := range possibleWords {
 			_, ok := partKeys[subWord]
-			if ok == true && len(toHighlight) < len(subWord){
+			if ok == true && len(toHighlight) < len(subWord) {
 				toHighlight = subWord
 				x := len(word)
 				if subIndex < x {
-					highlightIndex= 0
-				}else {
+					highlightIndex = 0
+				} else {
 					for i := 1; i < len(word); i++ {
 						x += len(word) - i
 						if subIndex < x {
@@ -40,7 +40,7 @@ func findSubstrings(words []string, parts []string) []string {
 
 		if toHighlight != "" {
 			//fmt.Println("atxxx", toHighlight, highlightIndex, word)
-			words[wordIndex] = words[wordIndex][0 : highlightIndex] + "[" + words[wordIndex][highlightIndex : highlightIndex + len(toHighlight)] + "]" + words[wordIndex][highlightIndex + len(toHighlight) : ]
+			words[wordIndex] = words[wordIndex][0:highlightIndex] + "[" + words[wordIndex][highlightIndex:highlightIndex+len(toHighlight)] + "]" + words[wordIndex][highlightIndex+len(toHighlight):]
 		}
 
 	}
@@ -53,7 +53,7 @@ func findPossibleWords(word string, possibleWords []string) {
 	possibleWordCount := 0
 	for wIndex := 0; wIndex < len(word); wIndex++ {
 		subStr := string(word[wIndex])
-		possibleWords[possibleWordCount] =subStr
+		possibleWords[possibleWordCount] = subStr
 		possibleWordCount++
 		for subIndex := wIndex + 1; subIndex < len(word); subIndex++ {
 			subStr += string(word[subIndex])
@@ -66,8 +66,8 @@ func findPossibleWords(word string, possibleWords []string) {
 func isSub(word *string, part *string) (bool, int, int) {
 
 	w := *word
-	for starter := 0; starter + len(*part) <= len(*word); starter ++ {
-		if *part == w[starter : starter + len(*part)] {
+	for starter := 0; starter+len(*part) <= len(*word); starter++ {
+		if *part == w[starter:starter+len(*part)] {
 			return true, starter, starter + len(*part)
 		}
 	}
@@ -76,30 +76,30 @@ func isSub(word *string, part *string) (bool, int, int) {
 
 }
 
-func BubbleSortStr(inputArray []string, order string){
-	lenInputArray:= len(inputArray)
+//BubbleSortStr is used to sort string ASC or DSC
+func BubbleSortStr(inputArray []string, order string) {
+	lenInputArray := len(inputArray)
 	swap := true
-	for ; swap == true; {
+	for swap == true {
 		swap = false
-		for counter := 0; counter <  (lenInputArray - 1); counter ++ {
+		for counter := 0; counter < (lenInputArray - 1); counter++ {
 			elm1 := inputArray[counter]
-			elm2 := inputArray[counter + 1]
-			if len(elm1) < len(elm2) && order == "DES"{
+			elm2 := inputArray[counter+1]
+			if len(elm1) < len(elm2) && order == "DES" {
 				swap = true
 				inputArray[counter] = elm2
-				inputArray[counter + 1] = elm1
+				inputArray[counter+1] = elm1
 			}
-			if len(elm1) > len(elm2) && order == "ASC"{
+			if len(elm1) > len(elm2) && order == "ASC" {
 				swap = true
 				inputArray[counter] = elm2
-				inputArray[counter + 1] = elm1
+				inputArray[counter+1] = elm1
 			}
 		}
-		lenInputArray -= 1
+		lenInputArray--
 	}
 	fmt.Println(time.Now(), "sorted")
 }
-
 
 func isSub1(ww string, c string, w map[int32][]int) (bool, int, int) {
 
@@ -113,8 +113,8 @@ func isSub1(ww string, c string, w map[int32][]int) (bool, int, int) {
 		if v+len(c) > len(ww) {
 			continue
 		}
-		if c == ww[v : v+len(c)] {
-			return true, v, v+len(c)
+		if c == ww[v:v+len(c)] {
+			return true, v, v + len(c)
 		}
 	}
 
@@ -122,6 +122,7 @@ func isSub1(ww string, c string, w map[int32][]int) (bool, int, int) {
 
 }
 
+/*
 func main() {
 
 	words := []string{
@@ -10125,7 +10126,7 @@ func main() {
 		"northerly",
 		"Poincare",
 		"sash"}
-	  parts := []string {
+	parts := []string{
 		"Eedl",
 		"qdUP",
 		"xcIZo",
@@ -20127,7 +20128,9 @@ func main() {
 		"YcFE",
 		"ywSD"}
 
-	  fmt.Println(time.Now())
-	  fmt.Println( findSubstrings(words, parts))
-	  fmt.Println(time.Now())
+	fmt.Println(time.Now())
+	fmt.Println(findSubstrings(words, parts))
+	fmt.Println(time.Now())
 }
+
+*/

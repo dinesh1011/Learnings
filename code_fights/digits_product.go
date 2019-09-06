@@ -9,7 +9,7 @@ func digitsProduct(product int) int {
 
 	if product == 1 {
 		return 1
-	}else if product == 0 {
+	} else if product == 0 {
 		return 10
 	}
 
@@ -36,7 +36,7 @@ func productOfIter(iter int) int {
 
 	product := 1
 
-	for ; ; {
+	for {
 
 		digit := iter % 10
 		product *= digit
@@ -63,9 +63,9 @@ func digitsProduct1(product int) int {
 	fmt.Println(digits)
 	for i := 9; i > 1; i-- {
 		fmt.Println(product, i)
-		for (product % i) == 0{
+		for (product % i) == 0 {
 			fmt.Println(product, i)
-			digits = append(digits,i)
+			digits = append(digits, i)
 			product /= i
 		}
 	}
@@ -76,7 +76,7 @@ func digitsProduct1(product int) int {
 
 	//fmt.Println(digits)
 	total := 0
-	for i := len(digits)-1; i >= 0; i-- {
+	for i := len(digits) - 1; i >= 0; i-- {
 		total = 10*total + digits[i]
 	}
 	//fmt.Println(digits)
@@ -92,7 +92,7 @@ func digitsProduct2(product int) int {
 	}
 	r := ""
 	for i := 9; i > 1; i-- {
-		for ;product % i == 0; product /= i {
+		for ; product%i == 0; product /= i {
 			r = strconv.Itoa(i) + r
 		}
 	}
@@ -108,7 +108,7 @@ func digitsProduct2(product int) int {
 func fileNamingUnsorted(names []string) []string {
 
 	uniqueFiles := make(map[string]int)
-	output := []string {}
+	output := []string{}
 	for _, file := range names {
 		newName := file
 		for uniq := false; uniq == false; {
@@ -141,7 +141,7 @@ func fileNamingUnsorted(names []string) []string {
 func fileNaming(names []string) []string {
 
 	uniqueFiles := make(map[string]int)
-	output := []string {}
+	output := []string{}
 	for _, file := range names {
 		newName := file
 		for uniq := false; uniq == false; {
@@ -197,7 +197,7 @@ func messageFromBinaryCode(code string) string {
 func spiralNumbers(n int) [][]int {
 
 	spiralNum := make([][]int, n)
-	for index, _:= range spiralNum {
+	for index, _ := range spiralNum {
 		spiralNum[index] = make([]int, n)
 	}
 
@@ -209,9 +209,9 @@ func spiralNumbers(n int) [][]int {
 	revStopper := -1
 
 	x := 0
-	y:= 0
+	y := 0
 
-	for number := 1; number <= (n*n); number++ {
+	for number := 1; number <= (n * n); number++ {
 
 		if toRight == true {
 			if y == stopper {
@@ -233,7 +233,7 @@ func spiralNumbers(n int) [][]int {
 				x--
 				y--
 				toBottom = false
-				toLeft= true
+				toLeft = true
 				continue
 			}
 			spiralNum[x][y] = number
@@ -249,7 +249,7 @@ func spiralNumbers(n int) [][]int {
 				revStopper++
 				stopper--
 				toLeft = false
-				toTop= true
+				toTop = true
 				continue
 			}
 			spiralNum[x][y] = number
@@ -263,7 +263,7 @@ func spiralNumbers(n int) [][]int {
 				x++
 				y++
 				toTop = false
-				toRight= true
+				toRight = true
 				continue
 			}
 			spiralNum[x][y] = number
@@ -273,7 +273,7 @@ func spiralNumbers(n int) [][]int {
 	}
 
 	//for _, listNum := range spiralNum {
-		//fmt.Println(listNum)
+	//fmt.Println(listNum)
 	//}
 	return spiralNum
 }
@@ -297,7 +297,7 @@ func sudoku(grid [][]int) bool {
 			columnSum[x] += num
 			matrixSum[x] += num
 			sum += matrixSum[x]
-			if (y+1) % 3 == 0 && (x+1) % 3 == 0{
+			if (y+1)%3 == 0 && (x+1)%3 == 0 {
 				if sum != 45 {
 					return false
 				}
@@ -310,7 +310,7 @@ func sudoku(grid [][]int) bool {
 
 		}
 
-		if (y+1) % 3 == 0 {
+		if (y+1)%3 == 0 {
 			clearSlice := make([]int, 9)
 			matrixSum = clearSlice
 		}
@@ -330,14 +330,14 @@ func rotateImage(a [][]int) [][]int {
 
 	output := make([][]int, len(a))
 
-	for index,_ := range output {
+	for index, _ := range output {
 		output[index] = make([]int, len(a[0]))
 	}
 
 	xCounter := 0
 	for numList := 0; numList < len(a); numList++ {
 		yCounter := 0
-		for num := len(a[0]) -1; num >= 0 ; num-- {
+		for num := len(a[0]) - 1; num >= 0; num-- {
 			output[xCounter][yCounter] = a[num][numList]
 			yCounter++
 		}
@@ -349,7 +349,6 @@ func rotateImage(a [][]int) [][]int {
 	fmt.Println(output)
 	return output
 }
-
 
 func sudoku2(grid [][]string) bool {
 
@@ -363,46 +362,46 @@ func sudoku2(grid [][]string) bool {
 
 			if grid[x][y][0] == 46 {
 				rowUniqs[9] = 0
-			}else {
-				if rowUniqs[grid[x][y][0] - 49] > 0 {
+			} else {
+				if rowUniqs[grid[x][y][0]-49] > 0 {
 					fmt.Println("at row", x, y)
 					return false
 				}
-				rowUniqs[grid[x][y][0] - 49] += 1
+				rowUniqs[grid[x][y][0]-49] += 1
 			}
 
 			if grid[y][x][0] == 46 {
 				colUniqs[9] = 0
-			}else {
-				if colUniqs[grid[y][x][0] - 49] > 0 {
+			} else {
+				if colUniqs[grid[y][x][0]-49] > 0 {
 					fmt.Println("at column", y, x)
 					return false
 				}
-				colUniqs[grid[y][x][0] - 49] += 1
+				colUniqs[grid[y][x][0]-49] += 1
 			}
 
-			if x % 3 == 0 && y % 3 == 0 && x < len(grid) && y < len(grid[0]){
-				for xIndex := x; xIndex <= (x+2); xIndex++ {
+			if x%3 == 0 && y%3 == 0 && x < len(grid) && y < len(grid[0]) {
+				for xIndex := x; xIndex <= (x + 2); xIndex++ {
 					for yIndex := y; yIndex <= (y + 2); yIndex++ {
 						if grid[xIndex][yIndex][0] == 46 {
 							continue
 						}
-						if subMatrixUniqs[grid[xIndex][yIndex][0] - 49] > 0 {
+						if subMatrixUniqs[grid[xIndex][yIndex][0]-49] > 0 {
 							fmt.Println("at sub matrix", xIndex, yIndex)
 							return false
 						}
-						subMatrixUniqs[grid[xIndex][yIndex][0] - 49] += 1
+						subMatrixUniqs[grid[xIndex][yIndex][0]-49] += 1
 					}
 				}
 			}
 
-			if (y + 1) % 3 == 0 {
+			if (y+1)%3 == 0 {
 				temp := make([]int, 10)
 				copy(subMatrixUniqs, temp)
 				temp = nil
 			}
 
-		fmt.Println(rowUniqs, colUniqs, subMatrixUniqs)
+			fmt.Println(rowUniqs, colUniqs, subMatrixUniqs)
 		}
 
 	}
@@ -410,8 +409,7 @@ func sudoku2(grid [][]string) bool {
 	return true
 }
 
-
-func main() {
+/* func main() {
 
 	//fmt.Println(digitsProduct1(180))
 
@@ -428,3 +426,4 @@ func main() {
 	fmt.Println(sudoku2(xx))
 
 }
+*/
