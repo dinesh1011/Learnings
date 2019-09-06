@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-func BoundaryMidInsertSort(inputArray []int){
+// BoundaryMidInsertSort - sorts int
+func BoundaryMidInsertSort(inputArray []int) {
 	lenInputArray := len(inputArray)
 	var sortedArray []int
 	sortedArray = append(sortedArray, inputArray[0])
@@ -17,40 +18,40 @@ func BoundaryMidInsertSort(inputArray []int){
 			sortedArray = insertElement(sortedArray, currentElement, 0)
 			continue
 		}
-		if currentElement > sortedArray[lenSortedArray -1]{
+		if currentElement > sortedArray[lenSortedArray-1] {
 			sortedArray = insertElement(sortedArray, currentElement, lenSortedArray)
 			continue
 		}
 
 		sortedSubarray := sortedArray
-		midVal := len(sortedSubarray)  / 2
+		midVal := len(sortedSubarray) / 2
 		cursor := 0
 		insertPosition := 0
 
-		for ; stopMid == false ; {
+		for stopMid == false {
 			insertPosition = 0
 			lenSortedSubarray := len(sortedSubarray) - 1
 
-			if midVal == 0  {
+			if midVal == 0 {
 				if currentElement > sortedSubarray[midVal] {
 					insertPosition = cursor + 1
-					} else {
+				} else {
 					insertPosition = cursor
-					}
+				}
 				stopMid = true
 				break
-				} else if currentElement == sortedSubarray[midVal -1] {
+			} else if currentElement == sortedSubarray[midVal-1] {
 				insertPosition = cursor + (midVal - 1)
 				stopMid = true
 				break
-				} else if currentElement > sortedSubarray[midVal - 1]{
-				sortedSubarray = sortedSubarray[(midVal) : (lenSortedSubarray + 1)]
+			} else if currentElement > sortedSubarray[midVal-1] {
+				sortedSubarray = sortedSubarray[(midVal):(lenSortedSubarray + 1)]
 				cursor = cursor + (midVal)
-				} else if currentElement < sortedSubarray[midVal - 1]{
-				sortedSubarray = sortedSubarray[0 : midVal]
-				}
+			} else if currentElement < sortedSubarray[midVal-1] {
+				sortedSubarray = sortedSubarray[0:midVal]
+			}
 
-			insertPosition, midVal,  stopMid = findMid(currentElement, sortedSubarray)
+			insertPosition, midVal, stopMid = findMid(currentElement, sortedSubarray)
 			insertPosition = insertPosition + cursor
 
 		}
@@ -61,9 +62,9 @@ func BoundaryMidInsertSort(inputArray []int){
 	fmt.Println(sortedArray)
 }
 
-func insertElement(sortedArray []int, element int, index int) []int{
+func insertElement(sortedArray []int, element int, index int) []int {
 	newSlice := append(sortedArray, element)
-	copy(newSlice[(index + 1) : ], newSlice[index : ])
+	copy(newSlice[(index+1):], newSlice[index:])
 	newSlice[index] = element
 	return newSlice
 }
@@ -72,12 +73,11 @@ func findMid(currentElement int, sortedSubarray []int) (int, int, bool) {
 	lenSortedSubarray := len(sortedSubarray) - 1
 	if currentElement < sortedSubarray[0] {
 		return 0, 0, true
-	}else if currentElement > sortedSubarray[lenSortedSubarray] {
+	} else if currentElement > sortedSubarray[lenSortedSubarray] {
 		return lenSortedSubarray, 0, true
 	}
 	return 0, (lenSortedSubarray) / 2, false
 }
-
 
 /*func main(){
 

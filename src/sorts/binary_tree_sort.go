@@ -1,11 +1,12 @@
 package main
 
 import (
-	"learnings/trees"
 	"strings"
+
+	trees "../trees"
 )
 
-func binaryTreeSort(inputArray []int, order string){
+func binaryTreeSort(inputArray []int, order string) {
 	initialNode := trees.NewNode(inputArray[0])
 	tempBinaryTree := trees.NewBinaryTree(initialNode)
 
@@ -15,9 +16,9 @@ func binaryTreeSort(inputArray []int, order string){
 
 	if strings.ToLower(order) == "desc" {
 		tempBinaryTree.ReadFromRightToLeft()
-	}else if strings.ToLower(order) == "asc" {
+	} else if strings.ToLower(order) == "asc" {
 		tempBinaryTree.ReadFromLeftToRight()
-	}else{
+	} else {
 		tempBinaryTree.ReadFromLeftToRight()
 	}
 }
@@ -30,7 +31,7 @@ func main(){
 		131110, 99074, 8863, 189535, 80037, 33947, 193112, 405, 188704, 22651, 32, 50654,
 		194172, 18810, 93988, 36912, 1680, 152359, 118135, 55270, 13615, 110924, 147293,
 		75063, 58826, 51052, 137055, 80180, 93078, 158963, 74302}
-	
+
 	binaryTreeSort(inputArray, "desc")
 
 }
