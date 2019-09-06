@@ -120,7 +120,7 @@ func fileNamingUnsorted(names []string) []string {
 				break
 			}
 
-			uniqueFiles[file] += 1
+			uniqueFiles[file]++
 
 			keyNum := fmt.Sprintf("%d", uniqueFiles[file])
 			newName = file + "(" + keyNum + ")"
@@ -131,7 +131,7 @@ func fileNamingUnsorted(names []string) []string {
 
 	//fmt.Println(uniqueFiles)
 
-	for names, _ := range uniqueFiles {
+	for names := range uniqueFiles {
 		output = append(output, names)
 	}
 	return output
@@ -154,7 +154,7 @@ func fileNaming(names []string) []string {
 				break
 			}
 
-			uniqueFiles[file] += 1
+			uniqueFiles[file]++
 
 			keyNum := fmt.Sprintf("%d", uniqueFiles[file])
 			newName = file + "(" + keyNum + ")"
@@ -197,7 +197,7 @@ func messageFromBinaryCode(code string) string {
 func spiralNumbers(n int) [][]int {
 
 	spiralNum := make([][]int, n)
-	for index, _ := range spiralNum {
+	for index := range spiralNum {
 		spiralNum[index] = make([]int, n)
 	}
 
@@ -330,7 +330,7 @@ func rotateImage(a [][]int) [][]int {
 
 	output := make([][]int, len(a))
 
-	for index, _ := range output {
+	for index := range output {
 		output[index] = make([]int, len(a[0]))
 	}
 
@@ -367,7 +367,7 @@ func sudoku2(grid [][]string) bool {
 					fmt.Println("at row", x, y)
 					return false
 				}
-				rowUniqs[grid[x][y][0]-49] += 1
+				rowUniqs[grid[x][y][0]-49]++
 			}
 
 			if grid[y][x][0] == 46 {
@@ -377,7 +377,7 @@ func sudoku2(grid [][]string) bool {
 					fmt.Println("at column", y, x)
 					return false
 				}
-				colUniqs[grid[y][x][0]-49] += 1
+				colUniqs[grid[y][x][0]-49]++
 			}
 
 			if x%3 == 0 && y%3 == 0 && x < len(grid) && y < len(grid[0]) {
@@ -390,7 +390,7 @@ func sudoku2(grid [][]string) bool {
 							fmt.Println("at sub matrix", xIndex, yIndex)
 							return false
 						}
-						subMatrixUniqs[grid[xIndex][yIndex][0]-49] += 1
+						subMatrixUniqs[grid[xIndex][yIndex][0]-49]++
 					}
 				}
 			}

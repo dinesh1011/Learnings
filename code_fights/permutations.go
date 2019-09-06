@@ -32,7 +32,7 @@ func swapLexOrder(str string, pairs [][]int) string {
 						continue
 					}
 					pairs[pairIndex] = append(pairs[pairIndex], pairs[iterator][1])
-					uniqueConnections[pairs[iterator][1]] += 1
+					uniqueConnections[pairs[iterator][1]]++
 					//fmt.Println("at first", base, pairs[iterator], pairs[pairIndex])
 					pairs = append(pairs[0:iterator], pairs[iterator+1:]...)
 					iterator--
@@ -46,14 +46,14 @@ func swapLexOrder(str string, pairs [][]int) string {
 						continue
 					}
 					pairs[pairIndex] = append(pairs[pairIndex], pairs[iterator][0])
-					uniqueConnections[pairs[iterator][0]] += 1
+					uniqueConnections[pairs[iterator][0]]++
 					//fmt.Println("at second", base, pairs[iterator], pairs[pairIndex])
 					pairs = append(pairs[0:iterator], pairs[iterator+1:]...)
 					iterator--
 					continue
 				}
 			}
-			uniqueConnections[base] += 1
+			uniqueConnections[base]++
 		}
 
 		var toReverse []int
@@ -79,6 +79,7 @@ func swapLexOrder(str string, pairs [][]int) string {
 	return string(reversedStr)
 }
 
+//BubbleSort to sort int by ASC or DES
 func BubbleSort(inputArray []int, order string) {
 	lenInputArray := len(inputArray)
 	swap := true
@@ -98,7 +99,7 @@ func BubbleSort(inputArray []int, order string) {
 				inputArray[counter+1] = elm1
 			}
 		}
-		lenInputArray -= 1
+		lenInputArray--
 	}
 	//fmt.Println(inputArray)
 }
@@ -118,7 +119,7 @@ func permutation(inputLen int) [][]int {
 
 		appender := permutationInput[counter]
 
-		for _, _ = range permutations {
+		for range permutations {
 			listItem := permutations[0]
 			permutations = append(permutations[0:0], permutations[1:]...)
 
@@ -167,9 +168,8 @@ func findProfession(level int, pos int) string {
 	}
 	if overallChange {
 		return "Doctor"
-	} else {
-		return "Engineer"
 	}
+	return "Engineer"
 }
 
 //func main() {

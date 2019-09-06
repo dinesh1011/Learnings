@@ -77,7 +77,7 @@ func minesweeperOld(matrix [][]bool) [][]int {
 
 	for listIndex, matrixlist := range matrix {
 
-		for itemIndex, _ := range matrixlist {
+		for itemIndex := range matrixlist {
 
 			bombCount := 0
 			fmt.Println("listindex : ", listIndex)

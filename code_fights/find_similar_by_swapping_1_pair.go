@@ -59,7 +59,7 @@ func palindromeRearranging(inputString string) bool {
 		}
 		for _, element := range inputString {
 			if element == char {
-				charCount[string(element)] += 1
+				charCount[string(element)]++
 			}
 		}
 	}
